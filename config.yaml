@@ -1,0 +1,48 @@
+ort:
+  licenseFilePatterns:
+    licenseFilenames:
+    - "copying*"
+    - "copyright"
+    - "licence*"
+    - "license*"
+    - "*.licence"
+    - "*.license"
+    - "unlicence"
+    - "unlicense"
+    patentFilenames:
+    - "patents"
+    rootLicenseFilenames:
+    - "readme*"
+  severeIssueThreshold: "ERROR"
+  severeRuleViolationThreshold: "ERROR"
+  enableRepositoryPackageCurations: true
+  enableRepositoryPackageConfigurations: true
+  analyzer:
+    allowDynamicVersions: true
+    packageManagers:
+      Gradle:
+        mustRunAfter:
+        - "NPM"
+  downloader:
+    allowMovingRevisions: true
+    sourceCodeOrigins:
+    - "VCS"
+    - "ARTIFACT"
+  scanner:
+    skipConcluded: false
+    skipExcluded: true
+    archive:
+      enabled: false
+    createMissingArchives: true
+    detectedLicenseMapping: {}
+    config:
+      ScanCode:
+        options:
+          commandLine: "--copyright --license --consolidate --info --strip-root --only-findings --filter-clues --ignore 'test/**' --timeout 30"
+          parseLicenseExpressions: "true"
+          commandLineNonConfig: '--processes 4'
+          # minVersion: "31.2.0"
+          # maxVersion: "31.2.4"
+    ignorePatterns:
+    - "**/NOTICE"
+    - "**/META-INF/DEPENDENCIES"
